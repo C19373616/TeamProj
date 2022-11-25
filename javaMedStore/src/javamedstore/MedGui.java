@@ -385,17 +385,16 @@ ArrayList<String> inventoryArr = new ArrayList<String>();
         // TODO add your handling code here:
         ArrayList<String> deets = new ArrayList<String>();
         String userUsername = userName.getText();
-        
+
         ArrayList<String> rentals = new ArrayList<String>();
         rentals = JavaMedProject.getRentals();
-       
 
         String userPasswd = passWd.getText();
         deets = JavaMedProject.login(userUsername, userPasswd);
         //System.out.println(userUsername);
 
         if (deets.get(0).equals(userUsername) && deets.get(1).equals(userPasswd)) {
-            
+
             if (Integer.parseInt(deets.get(2)) == 1) {
 
                 for (Component c : jPanel3.getComponents()) {
@@ -410,17 +409,24 @@ ArrayList<String> inventoryArr = new ArrayList<String>();
                 inventoryArr = JavaMedProject.getInventory();
                 System.out.println(inventoryArr);
             } else {
-                if(rentals.contains(userUsername)){
-                    rentalReminder.setText("You have outstanding ");
+                if (rentals.contains(userUsername)) {
+                    rentalReminder.setText("You have outstanding rentals and cannot rent until the item is returned.");
+                    for (Component c : jPanel3.getComponents()) {
+                        c.setEnabled(true);
+                    }
+                    inventoryArr = JavaMedProject.getInventory();
+                    System.out.println(inventoryArr);
+                } else {
+                    for (Component c : jPanel3.getComponents()) {
+                        c.setEnabled(true);
+                    }
+                    for (Component d : jPanel4.getComponents()) {
+                        d.setEnabled(true);
+                    }
+                    inventoryArr = JavaMedProject.getInventory();
+                    System.out.println(inventoryArr);
+                    rentalReminder.setText("You have no outstanding rentals.");
                 }
-                for (Component c : jPanel3.getComponents()) {
-                    c.setEnabled(true);
-                }
-                for (Component d : jPanel4.getComponents()) {
-                    d.setEnabled(true);
-                }
-                inventoryArr = JavaMedProject.getInventory();
-                System.out.println(inventoryArr);
             }
         }
 
@@ -485,22 +491,21 @@ ArrayList<String> inventoryArr = new ArrayList<String>();
     private void rentBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rentBtnActionPerformed
         // TODO add your handling code here:
         String nameStr = rentName.getText();
-        int costOfProd = Integer.parseInt(inventoryArr.get(inventoryArr.indexOf(nameStr)+2));
-       // String costOfProd = inventoryArr.get(inventoryArr.indexOf(nameStr)+2);
+        int costOfProd = Integer.parseInt(inventoryArr.get(inventoryArr.indexOf(nameStr) + 2));
+        // String costOfProd = inventoryArr.get(inventoryArr.indexOf(nameStr)+2);
         String rentee = userName.getText();
         System.out.println(nameStr);
         System.out.println(costOfProd);
         System.out.println(rentee);
-        
-        
+
         long millis = System.currentTimeMillis();
         java.sql.Date date = new java.sql.Date(millis);
         LocalDate ld = date.toLocalDate();
         LocalDate monthAdded = ld.plusMonths(1);
         java.sql.Date sqldate = java.sql.Date.valueOf(monthAdded);
-        
+
         JavaMedProject.insertRental(nameStr, date, sqldate, costOfProd, rentee);
-        rentInform.setText("The rental has been set, you can only have 1 rental at a time. There will be a penalty for not returning the item at: "+sqldate);
+        rentInform.setText("The rental has been set, you can only have 1 rental at a time. There will be a penalty for not returning the item at: " + sqldate);
     }//GEN-LAST:event_rentBtnActionPerformed
 
     /**
