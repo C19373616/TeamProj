@@ -428,45 +428,50 @@ ArrayList<String> inventoryArr = new ArrayList<String>();
 
         String userPasswd = passWd.getText();
         deets = JavaMedProject.login(userUsername, userPasswd);
-        //System.out.println(userUsername);
 
-        if (deets.get(0).equals(userUsername) && deets.get(1).equals(userPasswd)) {
+        if (deets.size() == 0) {
+            rentalReminder.setText("Incorrect username or password please try again");
+        } else {
+            rentalReminder.setText("");
+            //System.out.println(userUsername);
 
-            if (Integer.parseInt(deets.get(2)) == 1) {
+            if (deets.get(0).equals(userUsername) && deets.get(1).equals(userPasswd)) {
 
-                for (Component c : jPanel3.getComponents()) {
-                    c.setEnabled(true);
-                }
-                for (Component d : jPanel4.getComponents()) {
-                    d.setEnabled(true);
-                }
-                for (Component e : jPanel5.getComponents()) {
-                    e.setEnabled(true);
-                }
-                inventoryArr = JavaMedProject.getInventory();
-                System.out.println(inventoryArr);
-            } else {
-                if (rentals.contains(userUsername)) {
-                    rentalReminder.setText("You have outstanding rentals and cannot rent until the item is returned.");
-                    for (Component c : jPanel3.getComponents()) {
-                        c.setEnabled(true);
-                    }
-                    inventoryArr = JavaMedProject.getInventory();
-                    System.out.println(inventoryArr);
-                } else {
+                if (Integer.parseInt(deets.get(2)) == 1) {
+
                     for (Component c : jPanel3.getComponents()) {
                         c.setEnabled(true);
                     }
                     for (Component d : jPanel4.getComponents()) {
                         d.setEnabled(true);
                     }
+                    for (Component e : jPanel5.getComponents()) {
+                        e.setEnabled(true);
+                    }
                     inventoryArr = JavaMedProject.getInventory();
                     System.out.println(inventoryArr);
-                    rentalReminder.setText("You have no outstanding rentals.");
+                } else {
+                    if (rentals.contains(userUsername)) {
+                        rentalReminder.setText("You have outstanding rentals and cannot rent until the item is returned.");
+                        for (Component c : jPanel3.getComponents()) {
+                            c.setEnabled(true);
+                        }
+                        inventoryArr = JavaMedProject.getInventory();
+                        System.out.println(inventoryArr);
+                    } else {
+                        for (Component c : jPanel3.getComponents()) {
+                            c.setEnabled(true);
+                        }
+                        for (Component d : jPanel4.getComponents()) {
+                            d.setEnabled(true);
+                        }
+                        inventoryArr = JavaMedProject.getInventory();
+                        System.out.println(inventoryArr);
+                        rentalReminder.setText("You have no outstanding rentals.");
+                    }
                 }
             }
         }
-
         //System.out.println(deets);
     }//GEN-LAST:event_loginBtnActionPerformed
 
@@ -548,7 +553,9 @@ ArrayList<String> inventoryArr = new ArrayList<String>();
     private void retrnBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_retrnBtnActionPerformed
         // TODO add your handling code here:
         String rentee = renteeName.getText();
-        rentInform.setText(rentee);
+        String itemName = rentName.getText();
+
+        JavaMedProject.remvRental(itemName, rentee);
     }//GEN-LAST:event_retrnBtnActionPerformed
 
     private void renteeNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_renteeNameActionPerformed

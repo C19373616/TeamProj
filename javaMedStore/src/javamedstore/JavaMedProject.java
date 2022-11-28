@@ -87,6 +87,7 @@ public class JavaMedProject {
 
         } catch (SQLException sqlex) {
             System.err.println("SQL statement issue " + sqlex.getMessage());
+           
         } finally {
 
             // Step 3: Closing database connection
@@ -330,9 +331,9 @@ public class JavaMedProject {
         }
         try ( Connection conn = DriverManager.getConnection(dbURL);  Statement stmnt = conn.createStatement();) {
             System.out.println("User is returning item...");
-            //String sqlStr = "INSERT INTO Rentals(Name, DateRented, ToBeReturned, Cost, Rentee) VALUES('" + Name + "','" + rentalDate + "','" + returnDate + "'," + cost + ",'" + rentee + "')";
-            //System.out.println(sqlStr);
-            //stmnt.executeUpdate(sqlStr);
+            String sqlStr = "DELETE FROM Rentals WHERE Name = '"+itemName+"' AND Rentee ='"+rentee+"'";
+            System.out.println(sqlStr);
+            stmnt.executeUpdate(sqlStr);
         } catch (SQLException e) {
             e.printStackTrace();
         }
