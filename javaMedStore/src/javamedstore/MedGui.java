@@ -13,7 +13,7 @@ import java.time.format.DateTimeFormatter;
 
 /**
  *
- * @author sosin
+ * @author sosin/Francis
  */
 public class MedGui extends javax.swing.JFrame {
 
@@ -66,6 +66,9 @@ public class MedGui extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         rentInform = new javax.swing.JTextArea();
         jLabel8 = new javax.swing.JLabel();
+        retrnBtn = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
+        renteeName = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
         updateAdmin = new javax.swing.JButton();
         nameFld = new javax.swing.JTextField();
@@ -147,14 +150,14 @@ public class MedGui extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 392, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(userName, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                             .addGap(160, 160, 160)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(loginBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(passWd)))))
+                            .addComponent(loginBtn))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(userName, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(passWd, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -226,6 +229,12 @@ public class MedGui extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Purchase", jPanel3);
 
+        rentName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rentNameActionPerformed(evt);
+            }
+        });
+
         rentBtn.setText("Rent");
         rentBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -242,6 +251,21 @@ public class MedGui extends javax.swing.JFrame {
 
         jLabel8.setText("NOTE: The Rental Period lasts 1 month");
 
+        retrnBtn.setText("Return");
+        retrnBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                retrnBtnActionPerformed(evt);
+            }
+        });
+
+        jLabel9.setText("Rentee:");
+
+        renteeName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                renteeNameActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -249,27 +273,40 @@ public class MedGui extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(rentBtn)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(rentName, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(110, 110, 110)
-                        .addComponent(jLabel8)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(rentBtn)
+                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(rentName, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(102, 102, 102)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(renteeName, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(retrnBtn)
+                            .addComponent(jLabel9)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel8)
+                        .addGap(89, 89, 89)))
+                .addContainerGap(88, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(50, 50, 50)
+                .addContainerGap()
+                .addComponent(jLabel8)
+                .addGap(28, 28, 28)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jLabel8))
+                    .addComponent(jLabel9))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(rentName, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(rentBtn)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rentName, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(renteeName, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(12, 12, 12)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rentBtn)
+                    .addComponent(retrnBtn))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(42, Short.MAX_VALUE))
@@ -371,7 +408,7 @@ public class MedGui extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 404, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -508,6 +545,20 @@ ArrayList<String> inventoryArr = new ArrayList<String>();
         rentInform.setText("The rental has been set, you can only have 1 rental at a time. There will be a penalty for not returning the item at: " + sqldate);
     }//GEN-LAST:event_rentBtnActionPerformed
 
+    private void retrnBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_retrnBtnActionPerformed
+        // TODO add your handling code here:
+        String rentee = renteeName.getText();
+        rentInform.setText(rentee);
+    }//GEN-LAST:event_retrnBtnActionPerformed
+
+    private void renteeNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_renteeNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_renteeNameActionPerformed
+
+    private void rentNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rentNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rentNameActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -556,6 +607,7 @@ ArrayList<String> inventoryArr = new ArrayList<String>();
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -578,6 +630,8 @@ ArrayList<String> inventoryArr = new ArrayList<String>();
     private javax.swing.JTextArea rentInform;
     private javax.swing.JTextField rentName;
     private javax.swing.JTextArea rentalReminder;
+    private javax.swing.JTextField renteeName;
+    private javax.swing.JButton retrnBtn;
     private javax.swing.JButton updateAdmin;
     private javax.swing.JTextField userName;
     // End of variables declaration//GEN-END:variables
