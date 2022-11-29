@@ -8,3 +8,10 @@
 28/11/2022 01:22 Francis Santos - Added error checking when user enters username and password, system now checks if username and password when executed with SQL statement returns an array of 0 meaning incorrect username and password which will also be displayed in the text area.
 
 29/11/2022 00:36 Francis Santos - Improved error checking as ordinary user could access admin only page when admin was logged in first, error checks improved to catch not only if databse returns nothing but also if SQL statement returns values which do not correspond to existing user. Also only allowed for admin to edit rental returns, but created method for user to submit that they have returned the equipment, admin checks the user submission and can remove users existing rental data.
+
+29/11/2022 22:16 Francis Santos - Added heuristics 1,2,3,9 and 10 -
+Heuristic 1 - Visibility of system status.
+Heuristic 2 - Match between system and the real world.
+Heuristic 3 - User control and freedom.
+Heuristic 9 - Help users recognize, diagnose, and recover from errors.
+Heuristic 10 - Help and documentation.
