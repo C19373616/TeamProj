@@ -120,7 +120,6 @@ public class JavaMedProject {
         ResultSet resultSet = null;
         String msAccDB = "MedStore1.accdb"; // path to the DB file
         String dbURL = "jdbc:ucanaccess://" + msAccDB;
-        int p = 0;
         ArrayList<String> inventoryArray = new ArrayList<String>();
 
         try {
