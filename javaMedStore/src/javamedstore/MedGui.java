@@ -732,7 +732,7 @@ ArrayList<String> inventoryArr = new ArrayList<String>();
                     }
                     //if user has outstanding rentals disable rental tab and state user has outstanding rental
                     if (rentals.contains(userUsername)) {
-                        rentalReminder.setText("You have outstanding rentals and cannot rent until the item is returned.");
+                        rentalReminder.setText("Your account still shows item needs to be returned, you cannot rent until the item is returned.");
                         for (Component c : jPanel3.getComponents()) {
                             c.setEnabled(true);
                         }
