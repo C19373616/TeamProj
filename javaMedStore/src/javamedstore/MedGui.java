@@ -179,7 +179,7 @@ public class MedGui extends javax.swing.JFrame {
         });
 
         jLabel9.setFont(new java.awt.Font("Cambria", 1, 24)); // NOI18N
-        jLabel9.setText("Hospital Inventory");
+        jLabel9.setText("Medical Items Inventory");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
