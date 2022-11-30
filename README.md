@@ -17,3 +17,5 @@ Heuristic 9 - Help users recognize, diagnose, and recover from errors.
 Heuristic 10 - Help and documentation.
 
 29/11/2022 14:07 Francis Santos - Added more improvement to login security - users before could still access rentals and purchases when they enter incorrect password but correct username, nullified this error. Also fixed the equipment return form, previously was overwriting existing data now it appends to end of .txt file, users can now also save email address and phone number (optional) in the .txt file. also added commenting. 
+
+30/11/2022 19:10 Richard Sosinski - Added user creation, Admin checking of stock and users, admin checking of rentals 
