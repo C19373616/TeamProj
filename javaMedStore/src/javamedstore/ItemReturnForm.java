@@ -4,13 +4,14 @@
  */
 package javaMedStore;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;  // Import the File class
 import java.io.IOException;  // Import the IOException class to handle errors
 
 /**
  *
- * @author Francis Santos
+ * @author sosin/Francis
  */
 public class ItemReturnForm extends javax.swing.JFrame {
 
@@ -104,10 +105,6 @@ public class ItemReturnForm extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(190, 190, 190))
             .addGroup(layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -127,6 +124,10 @@ public class ItemReturnForm extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(199, 199, 199)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -175,27 +176,52 @@ public class ItemReturnForm extends javax.swing.JFrame {
 
     private void submitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitBtnActionPerformed
         // TODO add your handling code here:
+        //try to store user data into file
         try {
+            //get text stored in both fields itemName1 and renteeName1
             String it1 = itemName1.getText();
             String rt1 = renteeName1.getText();
-            if (it1.isBlank() == true) {
-                infoDisplay.setText("Product name field cannot be empty");
-            }
-            if (rt1.isEmpty() == true) {
-                infoDisplay.setText("Rentee field cannot be empty");
+            //create new file and appropriate variable for existing file
+            File abc = new File("userItemReturn.txt");
+            //if file does not already exist
+            if (abc.exists() != true) {
+                //create new file
+                abc.createNewFile();
+            //if file already exists
             } else {
-                if (rt1.isEmpty() != true && it1.isEmpty() != true){
-                    File abc = new File("userItemReturn.txt");
-                    FileWriter itemRet = new FileWriter(abc.getAbsolutePath());
-                    itemRet.append("Item Returned: " + itemName1.getText());
-                    itemRet.append("\nRentee: " + renteeName1.getText());
-                    itemRet.close();
-                    infoDisplay.setText("Rental item returned!");
-                }
-                else{
-                    infoDisplay.setText("Error submiting information");
+                //check to see if data entered in itemName1 is empty
+                if (it1.isEmpty() == true) {
+                    infoDisplay.setText("Product name field cannot be empty");
+                } else {
+                    //check to see if data entered in renteeName1 is empty
+                    if (rt1.isEmpty() == true) {
+                        infoDisplay.setText("Rentee field cannot be empty");
+                    } else {
+                        //if fields aren't empty execute data addition to file
+                        if (rt1.isEmpty() != true && it1.isEmpty() != true) {
+                            //File writer allows to write to the txt file and append
+                            FileWriter itemRet = new FileWriter(abc.getAbsolutePath(),true);
+                            //allows for the addition of data into the file instead of overwriting
+                            BufferedWriter addData = new BufferedWriter(itemRet);
+                            //write user entered data into the .txt file
+                            addData.write("\n");
+                            addData.write("\nItem Returned: " + itemName1.getText());
+                            addData.write("\nRentee: " + renteeName1.getText());
+                            addData.write("\nPhone Number: " + phoneNo1.getText());
+                            addData.write("\nEmail Address: " + emailAddr1.getText());
+                            //close FileWriter and BufferedWriter
+                            addData.close();
+                            itemRet.close();
+                            //display that item has been returned
+                            infoDisplay.setText("Rental item returned!");
+                        //else if fields managed to still be empty
+                        } else {
+                            infoDisplay.setText("Error submiting information");
+                        }
+                    }
                 }
             }
+            //catch any error that may occur when trying to write to file
         } catch (Exception e) {
             e.printStackTrace();
         }

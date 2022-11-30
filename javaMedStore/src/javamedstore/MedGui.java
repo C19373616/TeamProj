@@ -168,23 +168,21 @@ public class MedGui extends javax.swing.JFrame {
                     .addComponent(jScrollPane3)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addComponent(infoGuide)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(passWd, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(userName, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(38, 38, 38)
+                                    .addComponent(loginBtn)
+                                    .addGap(161, 161, 161))
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(passWd, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(userName, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(38, 38, 38)
-                                        .addComponent(loginBtn)
-                                        .addGap(161, 161, 161))
-                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(112, 112, 112)
                                 .addComponent(jLabel9)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 126, Short.MAX_VALUE)
+                                .addGap(113, 113, 113)
                                 .addComponent(loginExtBtn)))))
                 .addContainerGap())
         );
@@ -193,11 +191,10 @@ public class MedGui extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(infoGuide)
-                        .addComponent(jLabel9))
+                    .addComponent(jLabel9)
+                    .addComponent(infoGuide)
                     .addComponent(loginExtBtn))
-                .addGap(17, 17, 17)
+                .addGap(25, 25, 25)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(userName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -274,7 +271,7 @@ public class MedGui extends javax.swing.JFrame {
                     .addComponent(purchaseName, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buyBtn))
                 .addGap(42, 42, 42)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -363,7 +360,7 @@ public class MedGui extends javax.swing.JFrame {
                 .addGap(12, 12, 12)
                 .addComponent(returnRqst)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -497,7 +494,7 @@ public class MedGui extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(retrnBtn1)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -519,24 +516,36 @@ public class MedGui extends javax.swing.JFrame {
 ArrayList<String> inventoryArr = new ArrayList<String>();
     private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
         // TODO add your handling code here:
+        //creating array list to hold user details and get text stored in input box for username
         ArrayList<String> deets = new ArrayList<String>();
         String userUsername = userName.getText();
-
+        //creating array to hold existing rentals data 
         ArrayList<String> rentals = new ArrayList<String>();
         rentals = JavaMedProject.getRentals();
-
+        //get text stored in input box for password and check if they exist in the db table
         String userPasswd = passWd.getText();
         deets = JavaMedProject.login(userUsername, userPasswd);
-
+        //if user does not exist or if username or password is wrong state error and disable tabs
         if (deets.size() == 0 && deets.size() <= 3) {
             rentalReminder.setText("Incorrect username or password please try again");
+            //disable all tabs
+            for (Component c : jPanel3.getComponents()) {
+                c.setEnabled(false);
+            }
+            for (Component d : jPanel4.getComponents()) {
+                d.setEnabled(false);
+            }
+            for (Component e : jPanel5.getComponents()) {
+                e.setEnabled(false);
+            }
+            //if user credentials are correct execute main code
         } else {
             //System.out.println(userUsername);
-
+            //additional check if username and password match existing
             if (deets.get(0).equals(userUsername) && deets.get(1).equals(userPasswd)) {
-
+                //check if user is the admin
                 if (Integer.parseInt(deets.get(2)) == 1) {
-
+                    //enable all tabs
                     for (Component c : jPanel3.getComponents()) {
                         c.setEnabled(true);
                     }
@@ -548,10 +557,13 @@ ArrayList<String> inventoryArr = new ArrayList<String>();
                     }
                     inventoryArr = JavaMedProject.getInventory();
                     System.out.println(inventoryArr);
+                    //if user is not the admin
                 } else {
+                    //disable admin tab
                     for (Component e : jPanel5.getComponents()) {
                         e.setEnabled(false);
                     }
+                    //if user has outstanding rentals disable rental tab and state user has outstanding rental
                     if (rentals.contains(userUsername)) {
                         rentalReminder.setText("You have outstanding rentals and cannot rent until the item is returned.");
                         for (Component c : jPanel3.getComponents()) {
@@ -559,6 +571,7 @@ ArrayList<String> inventoryArr = new ArrayList<String>();
                         }
                         inventoryArr = JavaMedProject.getInventory();
                         System.out.println(inventoryArr);
+                        //if user has no outstanding rentals he/she may purchase or rent
                     } else {
                         for (Component c : jPanel3.getComponents()) {
                             c.setEnabled(true);
@@ -590,10 +603,14 @@ ArrayList<String> inventoryArr = new ArrayList<String>();
 
     private void buyBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buyBtnActionPerformed
         // TODO add your handling code here:
+        //get data stored in input box 'purchaseName'
         String purchase = purchaseName.getText();
+        //check if database table has item user is looking to buy
         if (inventoryArr.contains(purchase)) {
+            //get index of where in the inventory the item user is looking for
             int indexOfInv = inventoryArr.indexOf(purchase);
             System.out.println(indexOfInv);
+            
             int indexOfId = indexOfInv - 1;
             int indexOfQty = indexOfInv + 1;
             int indexOfCost = indexOfInv + 2;
@@ -669,10 +686,12 @@ ArrayList<String> inventoryArr = new ArrayList<String>();
 
     private void retrnBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_retrnBtn1ActionPerformed
         // TODO add your handling code here:
+        //get data stored in both fields
         String rentee = renteeName.getText();
         String itemName = rentName.getText();
-
+        //find rental data based on two fields entered with the sql statement and remove item
         JavaMedProject.remvRental(itemName, rentee);
+        
         rentUpdate.setText("Item returned, information updated successfully");
     }//GEN-LAST:event_retrnBtn1ActionPerformed
 
@@ -696,22 +715,30 @@ ArrayList<String> inventoryArr = new ArrayList<String>();
         ItemReturnForm itr = new ItemReturnForm();
         itr.show();
         dispose();
-        
+
     }//GEN-LAST:event_returnRqstActionPerformed
 
     private void infoGuideActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_infoGuideActionPerformed
         // TODO add your handling code here:
-                // TODO add your handling code here:
         System.out.println("\n!======================================================================================================!");
         System.out.println("Hello, this application will allow you to rent and buy listed hospital equipment.");
         System.out.println("You can buy or rent from the appropriate labelled tabs.");
         System.out.println("Only the administrator may remove rented equipment and insert data.");
         System.out.println("A return button on the rentals page allows you to inform that equipment has been returned.");
         System.out.println("You may only rent an item for a month, you must renew the rented item otherwise.");
-        System.out.println("The exit button will close the program entirely and any uncompleted rents or buy wont be processed");
+        System.out.println("The exit button will close the program entirely and any uncompleted rents or buys wont be processed");
         System.out.println("Only existing username and password may use the hospital equipment database.");
         System.out.println("!======================================================================================================!");
-        
+        rentalReminder.setText("\n!======================================================================================================!\n"+
+                                "Hello, this application will allow you to rent and buy listed hospital equipment.\n" +
+                                "You can buy or rent from the appropriate labelled tabs.\n" +
+                                "Only the administrator may remove rented equipment and insert data.\n" +
+                                "A return button on the rentals page allows you to inform that equipment has been returned.\n" +
+                                "You may only rent an item for a month, you must renew the rented item otherwise.\n" +
+                                "The exit button will close the program entirely and any uncompleted rents or buys wont be processed\n" +
+                                "Only existing username and password may use the hospital equipment database.\n" +
+                                "!======================================================================================================!");
+
     }//GEN-LAST:event_infoGuideActionPerformed
 
     /**

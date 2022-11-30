@@ -1,2 +1,10 @@
-Item Returned: a
-Rentee: a
+
+Item Returned: Crutches
+Rentee: Buyer2
+Phone Number: 0864920128
+Email Address: Johndoe@example.com
+
+Item Returned: Wheelchair
+Rentee: Buyer1
+Phone Number: 0864509912
+Email Address: Johndoe@example.com

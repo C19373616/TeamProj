@@ -45,7 +45,7 @@ public class JavaMedProject {
                     + "registering MS Access JDBC driver");
             cnfex.printStackTrace();
         }
-
+        //main execution to enter sql statement into database
         try {
 
             String sqlStr = "SELECT usr, passwd, Priority FROM Users WHERE usr='" + usr + "' AND passwd='" + pass + "'";
@@ -84,10 +84,10 @@ public class JavaMedProject {
 
                 }
             }
-
+            //catch if error occurs with sql statement
         } catch (SQLException sqlex) {
             System.err.println("SQL statement issue " + sqlex.getMessage());
-           
+
         } finally {
 
             // Step 3: Closing database connection
@@ -113,7 +113,8 @@ public class JavaMedProject {
         return loginArray;
 
     }
-
+    
+    //function lists out all data from Inventory table
     public static ArrayList<String> getInventory() {
         Connection connection = null;
         Statement statement = null;
@@ -129,7 +130,7 @@ public class JavaMedProject {
                     + "registering MS Access JDBC driver");
             cnfex.printStackTrace();
         }
-
+        //main execution to enter sql statement into database
         try {
 
             //String sqlStr = "SELECT user, passwd FROM Users WHERE usr='"+usr+"' AND passwd='"+pass+"'";
@@ -167,7 +168,7 @@ public class JavaMedProject {
 
                 }
             }
-
+            //catch if error occurs with sql statement
         } catch (SQLException sqlex) {
             System.err.println("SQL statement issue " + sqlex.getMessage());
         } finally {
@@ -192,7 +193,8 @@ public class JavaMedProject {
         }
         return inventoryArray;
     }
-
+    
+    //function allows for purchase to be made and data to be recorded
     public static void insertPurchase(String Name, Date DatePurchased, int Cost) {
         Connection connection = null;
         Statement statement = null;
@@ -201,13 +203,16 @@ public class JavaMedProject {
         String dbURL = "jdbc:ucanaccess://" + msAccDB;
 
         try {
+            //loading in JDBC driver.
             // Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
             Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+            //catch error when loading in JDBC driver
         } catch (ClassNotFoundException cnfex) {
             System.out.println("Problem in loading or "
                     + "registering MS Access JDBC driver");
             cnfex.printStackTrace();
         }
+        //main execution to enter sql statement into database
         try ( Connection conn = DriverManager.getConnection(dbURL);  Statement stmnt = conn.createStatement();) {
             System.out.println("Inserting records into the table...");
             String sqlStr = "INSERT INTO purchases(Name, DatePurchased, Cost) VALUES('" + Name + "','" + DatePurchased + "'," + Cost + ")";
@@ -216,7 +221,8 @@ public class JavaMedProject {
             e.printStackTrace();
         }
     }
-
+    
+    //?
     public static void updateInv(int quantity, int iD) {
         Connection connection = null;
         Statement statement = null;
@@ -225,13 +231,16 @@ public class JavaMedProject {
         String dbURL = "jdbc:ucanaccess://" + msAccDB;
 
         try {
+            //loading in JDBC driver.
             // Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
             Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+            //catch error when loading in JDBC driver
         } catch (ClassNotFoundException cnfex) {
             System.out.println("Problem in loading or "
                     + "registering MS Access JDBC driver");
             cnfex.printStackTrace();
         }
+        //main execution to enter sql statement into database
         try ( Connection conn = DriverManager.getConnection(dbURL);  Statement stmnt = conn.createStatement();) {
             System.out.println("Updating records into the table...");
             String sqlStr = "UPDATE inventory SET quantity=" + quantity + " WHERE ID=" + iD + "";
@@ -241,6 +250,7 @@ public class JavaMedProject {
         }
     }
 
+    //function allows for admin to update the inventory.
     public static void adminUpdateInv(String name, int quantity, int cost, int iD) {
         Connection connection = null;
         Statement statement = null;
@@ -249,13 +259,16 @@ public class JavaMedProject {
         String dbURL = "jdbc:ucanaccess://" + msAccDB;
 
         try {
-            // Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
+            //loading in JDBC driver.
+            //Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
             Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+            //catch error when loading in JDBC driver
         } catch (ClassNotFoundException cnfex) {
             System.out.println("Problem in loading or "
                     + "registering MS Access JDBC driver");
             cnfex.printStackTrace();
         }
+        //main execution to enter sql statement into database
         try ( Connection conn = DriverManager.getConnection(dbURL);  Statement stmnt = conn.createStatement();) {
             System.out.println("Updating records into the table...");
             String sqlStr = "UPDATE inventory SET Name='" + name + "', quantity=" + quantity + ", Cost=" + cost + " WHERE ID=" + iD + "";
@@ -264,7 +277,8 @@ public class JavaMedProject {
             e.printStackTrace();
         }
     }
-
+    
+    //function allows for admin to insert existing into the inventory.
     public static void adminInsertInventory(String Name, int quantity, int Cost) {
         Connection connection = null;
         Statement statement = null;
@@ -273,13 +287,16 @@ public class JavaMedProject {
         String dbURL = "jdbc:ucanaccess://" + msAccDB;
 
         try {
+            //loading in JDBC driver.
             // Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
             Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+            //catch error when loading in JDBC driver
         } catch (ClassNotFoundException cnfex) {
             System.out.println("Problem in loading or "
                     + "registering MS Access JDBC driver");
             cnfex.printStackTrace();
         }
+        //main execution to enter sql statement into database
         try ( Connection conn = DriverManager.getConnection(dbURL);  Statement stmnt = conn.createStatement();) {
             System.out.println("Inserting records into the table...");
             String sqlStr = "INSERT INTO Inventory(Name, Quantity, Cost) VALUES('" + Name + "'," + quantity + "," + Cost + ")";
@@ -288,22 +305,26 @@ public class JavaMedProject {
             e.printStackTrace();
         }
     }
-
+    
+    //function allows for rental to be made and for data to be recorded
     public static void insertRental(String Name, Date rentalDate, Date returnDate, int cost, String rentee) {
         Connection connection = null;
         Statement statement = null;
         ResultSet resultSet = null;
         String msAccDB = "MedStore1.accdb"; // path to the DB file
         String dbURL = "jdbc:ucanaccess://" + msAccDB;
-
+        
         try {
+            //loading in JDBC driver.
             // Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
             Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+            //catch error when loading in JDBC driver
         } catch (ClassNotFoundException cnfex) {
             System.out.println("Problem in loading or "
                     + "registering MS Access JDBC driver");
             cnfex.printStackTrace();
         }
+        //main execution to enter sql statement into database
         try ( Connection conn = DriverManager.getConnection(dbURL);  Statement stmnt = conn.createStatement();) {
             System.out.println("Inserting records into the table...");
             String sqlStr = "INSERT INTO Rentals(Name, DateRented, ToBeReturned, Cost, Rentee) VALUES('" + Name + "','" + rentalDate + "','" + returnDate + "'," + cost + ",'" + rentee + "')";
@@ -313,7 +334,9 @@ public class JavaMedProject {
             e.printStackTrace();
         }
     }
-        public static void remvRental(String itemName, String rentee) {
+    
+    //function allows for rental data to be removed.
+    public static void remvRental(String itemName, String rentee) {
         Connection connection = null;
         Statement statement = null;
         ResultSet resultSet = null;
@@ -321,23 +344,27 @@ public class JavaMedProject {
         String dbURL = "jdbc:ucanaccess://" + msAccDB;
 
         try {
+            //loading in JDBC driver.
             // Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
             Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+            //catch error when loading in JDBC driver
         } catch (ClassNotFoundException cnfex) {
             System.out.println("Problem in loading or "
                     + "registering MS Access JDBC driver");
             cnfex.printStackTrace();
         }
+        //main execution to enter sql statement into database
         try ( Connection conn = DriverManager.getConnection(dbURL);  Statement stmnt = conn.createStatement();) {
             System.out.println("User is returning item...");
-            String sqlStr = "DELETE FROM Rentals WHERE Name = '"+itemName+"' AND Rentee ='"+rentee+"'";
-            System.out.println(sqlStr);
+            String sqlStr = "DELETE FROM Rentals WHERE Name = '" + itemName + "' AND Rentee ='" + rentee + "'";
+            //System.out.println(sqlStr);
             stmnt.executeUpdate(sqlStr);
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
-
+    
+    //function lists out all data from rentals table
     public static ArrayList<String> getRentals() {
         Connection connection = null;
         Statement statement = null;
@@ -348,13 +375,15 @@ public class JavaMedProject {
         ArrayList<String> rentalArray = new ArrayList<String>();
 
         try {
+            //loading in JDBC driver.
             Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+            //catch error when loading in JDBC driver
         } catch (ClassNotFoundException cnfex) {
             System.out.println("Problem in loading or "
                     + "registering MS Access JDBC driver");
             cnfex.printStackTrace();
         }
-
+        //main execution to enter sql statement into database
         try {
 
             //String sqlStr = "SELECT user, passwd FROM Users WHERE usr='"+usr+"' AND passwd='"+pass+"'";
