@@ -115,6 +115,85 @@ public class JavaMedProject {
     }
     
     //function lists out all data from Inventory table
+    public static ArrayList<String> getUsers() {
+        Connection connection = null;
+        Statement statement = null;
+        ResultSet resultSet = null;
+        String msAccDB = "MedStore1.accdb"; // path to the DB file
+        String dbURL = "jdbc:ucanaccess://" + msAccDB;
+        ArrayList<String> userArray = new ArrayList<String>();
+
+        try {
+            Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+        } catch (ClassNotFoundException cnfex) {
+            System.out.println("Problem in loading or "
+                    + "registering MS Access JDBC driver");
+            cnfex.printStackTrace();
+        }
+        //main execution to enter sql statement into database
+        try {
+
+            //String sqlStr = "SELECT user, passwd FROM Users WHERE usr='"+usr+"' AND passwd='"+pass+"'";
+            String sqlStr = "Select * from Users";
+            // Step 2.A: Create and get connection using DriverManager class
+            connection = DriverManager.getConnection(dbURL);
+
+            // Step 2.B: Creating JDBC Statement
+            statement = connection.createStatement();
+
+            // Step 2.C: Executing SQL &amp; retrieve data into ResultSet
+            resultSet = statement.executeQuery(sqlStr);
+
+            // hardcoded header
+            //System.out.println("#\t\tName\t\tLocation\tDept#");
+            //System.out.println("=====\t\t=========\t=======\t\t=======");
+            ResultSetMetaData metaData = resultSet.getMetaData();
+            int numberOfColumns = metaData.getColumnCount();
+            // display the names of the columns in the ResultSet
+            for (int i = 1; i <= numberOfColumns; i++) {
+                System.out.printf("%-8s\t", metaData.getColumnName(i));
+            }
+            System.out.println("");
+            for (int i = 1; i <= numberOfColumns; i++) {
+                System.out.printf("%-8s\t", "=========");
+            }
+            // processing returned data and printing into console
+            // Step 2.D: use data from ResultSet
+            // use metadata
+            while (resultSet.next()) {
+                System.out.println("");
+                for (int i = 1; i <= numberOfColumns; i++) {
+                    //System.out.printf("%-8s\t", resultSet.getString(i));
+                    userArray.add(resultSet.getString(i));
+
+                }
+            }
+            //catch if error occurs with sql statement
+        } catch (SQLException sqlex) {
+            System.err.println("SQL statement issue " + sqlex.getMessage());
+        } finally {
+
+            // Step 3: Closing database connection
+            try {
+                if (null != resultSet) {
+                    // cleanup resources, once after processing
+                    resultSet.close();
+                }
+                if (null != statement) {
+                    // cleanup resources, once after processing
+                    statement.close();
+                }
+                if (null != connection) {
+                    // and then finally close connection
+                    connection.close();
+                }
+            } catch (SQLException sqlex) {
+                System.err.println(sqlex.getMessage());
+            }
+        }
+        return userArray;
+    }
+    
     public static ArrayList<String> getInventory() {
         Connection connection = null;
         Statement statement = null;
@@ -447,6 +526,36 @@ public class JavaMedProject {
         return rentalArray;
     }
 
+        public static void insertUser(String name, String passw) {
+        Connection connection = null;
+        Statement statement = null;
+        ResultSet resultSet = null;
+        String msAccDB = "MedStore1.accdb"; // path to the DB file
+        String dbURL = "jdbc:ucanaccess://" + msAccDB;
+        
+        try {
+            //loading in JDBC driver.
+            // Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
+            Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+            //catch error when loading in JDBC driver
+        } catch (ClassNotFoundException cnfex) {
+            System.out.println("Problem in loading or "
+                    + "registering MS Access JDBC driver");
+            cnfex.printStackTrace();
+        }
+        //main execution to enter sql statement into database
+        try ( Connection conn = DriverManager.getConnection(dbURL);  Statement stmnt = conn.createStatement();) {
+            System.out.println("Inserting records into the table...");
+            String sqlStr = "INSERT INTO Users(usr, passwd, Priority) VALUES('"+name+"','"+passw+"',0)";
+            System.out.println(sqlStr);
+            stmnt.executeUpdate(sqlStr);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+        
+        
+        
     public static void main(String[] args) {
         // TODO code application logic here
         new JavaMedProject();

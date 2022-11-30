@@ -32,6 +32,12 @@ public class MedGui extends javax.swing.JFrame {
         for (Component e : jPanel5.getComponents()) {
             e.setEnabled(false);
         }
+        for (Component c : jPanel8.getComponents()) {
+            c.setEnabled(false);
+        }
+        for (Component c : jPanel9.getComponents()) {
+            c.setEnabled(false);
+        }
     }
 
     /**
@@ -57,6 +63,12 @@ public class MedGui extends javax.swing.JFrame {
         loginExtBtn = new javax.swing.JButton();
         infoGuide = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
+        jPanel7 = new javax.swing.JPanel();
+        userSign = new javax.swing.JTextField();
+        passSign = new javax.swing.JTextField();
+        signUpBtn = new javax.swing.JButton();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         purchaseName = new javax.swing.JTextField();
         buyBtn = new javax.swing.JButton();
@@ -89,6 +101,17 @@ public class MedGui extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         rentUpdate = new javax.swing.JTextArea();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        rentalinfo = new javax.swing.JTextArea();
+        rentalgetBtn = new javax.swing.JButton();
+        jPanel8 = new javax.swing.JPanel();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        stockCntrlPan = new javax.swing.JTextArea();
+        stockControl = new javax.swing.JButton();
+        jPanel9 = new javax.swing.JPanel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        userCntrlField = new javax.swing.JTextArea();
+        userControl = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -156,7 +179,7 @@ public class MedGui extends javax.swing.JFrame {
         });
 
         jLabel9.setFont(new java.awt.Font("Cambria", 1, 24)); // NOI18N
-        jLabel9.setText("Hospital Inventory");
+        jLabel9.setText("Medical Items Inventory");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -211,6 +234,51 @@ public class MedGui extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Login", jPanel1);
 
+        signUpBtn.setText("Sign Up");
+        signUpBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                signUpBtnActionPerformed(evt);
+            }
+        });
+
+        jLabel12.setText("Username");
+
+        jLabel13.setText("Password");
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(42, 42, 42)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(userSign, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel12)
+                    .addComponent(signUpBtn))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel13)
+                    .addComponent(passSign, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(398, Short.MAX_VALUE))
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12)
+                    .addComponent(jLabel13))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(userSign, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(passSign, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(signUpBtn)
+                .addContainerGap(237, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Sign Up", jPanel7);
+
         purchaseName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 purchaseNameActionPerformed(evt);
@@ -257,7 +325,7 @@ public class MedGui extends javax.swing.JFrame {
                     .addComponent(purchaseName, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(24, 24, 24)
                 .addComponent(buyBtn)
-                .addContainerGap(188, Short.MAX_VALUE))
+                .addContainerGap(197, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -342,7 +410,7 @@ public class MedGui extends javax.swing.JFrame {
                                 .addComponent(rentName, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(rentBtn)))
-                        .addContainerGap(191, Short.MAX_VALUE))))
+                        .addContainerGap(200, Short.MAX_VALUE))))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -426,6 +494,18 @@ public class MedGui extends javax.swing.JFrame {
         rentUpdate.setRows(5);
         jScrollPane4.setViewportView(rentUpdate);
 
+        rentalinfo.setEditable(false);
+        rentalinfo.setColumns(20);
+        rentalinfo.setRows(5);
+        jScrollPane5.setViewportView(rentalinfo);
+
+        rentalgetBtn.setText("Get Rentals");
+        rentalgetBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rentalgetBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -433,82 +513,163 @@ public class MedGui extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(77, 77, 77)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addGap(77, 77, 77)
                                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel5Layout.createSequentialGroup()
-                                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel5)
-                                            .addComponent(nameFld, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel6)
-                                            .addComponent(qtyFld, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel7)
-                                            .addComponent(costFld, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(jPanel5Layout.createSequentialGroup()
-                                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(updateAdmin)
-                                            .addComponent(jLabel11)
-                                            .addComponent(itemName, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(insertAdmin)
-                                            .addComponent(jLabel10)
-                                            .addComponent(renteeName, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(jLabel5)
+                                    .addComponent(nameFld, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel6)
+                                    .addComponent(qtyFld, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel7)
+                                    .addComponent(costFld, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addGap(127, 127, 127)
-                                .addComponent(retrnBtn1)))
-                        .addGap(0, 271, Short.MAX_VALUE))
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addContainerGap())
+                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(updateAdmin)
+                                    .addComponent(jLabel11)
+                                    .addComponent(itemName, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(insertAdmin)
+                                    .addComponent(jLabel10)
+                                    .addComponent(renteeName, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(45, 45, 45)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(jPanel5Layout.createSequentialGroup()
+                            .addGap(127, 127, 127)
+                            .addComponent(retrnBtn1)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(rentalgetBtn))
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 582, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(11, 11, 11)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel7))
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(11, 11, 11)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel7))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(nameFld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(qtyFld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(costFld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(updateAdmin)
+                            .addComponent(insertAdmin))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel10)
+                            .addComponent(jLabel11))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(itemName, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(renteeName, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nameFld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(qtyFld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(costFld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(updateAdmin)
-                    .addComponent(insertAdmin))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel11))
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(retrnBtn1)
+                    .addComponent(rentalgetBtn, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(itemName, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(renteeName, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(retrnBtn1)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Admin", jPanel5);
+
+        stockCntrlPan.setEditable(false);
+        stockCntrlPan.setColumns(20);
+        stockCntrlPan.setRows(5);
+        jScrollPane7.setViewportView(stockCntrlPan);
+
+        stockControl.setText("Get Stock");
+        stockControl.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                stockControlActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 598, Short.MAX_VALUE)
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addComponent(stockControl)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(stockControl)
+                .addContainerGap())
+        );
+
+        jTabbedPane1.addTab("Admin Stock", jPanel8);
+
+        userCntrlField.setEditable(false);
+        userCntrlField.setColumns(20);
+        userCntrlField.setRows(5);
+        jScrollPane6.setViewportView(userCntrlField);
+
+        userControl.setText("Get Users");
+        userControl.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                userControlActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 610, Short.MAX_VALUE)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(userControl)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 314, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(userControl))
+        );
+
+        jTabbedPane1.addTab("Admin User", jPanel9);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTabbedPane1)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jTabbedPane1)
+                .addGap(28, 28, 28))
         );
 
         pack();
@@ -554,6 +715,12 @@ ArrayList<String> inventoryArr = new ArrayList<String>();
                     }
                     for (Component e : jPanel5.getComponents()) {
                         e.setEnabled(true);
+                    }
+                    for (Component c : jPanel8.getComponents()) {
+                        c.setEnabled(true);
+                    }
+                    for (Component c : jPanel9.getComponents()) {
+                        c.setEnabled(true);
                     }
                     inventoryArr = JavaMedProject.getInventory();
                     System.out.println(inventoryArr);
@@ -610,7 +777,7 @@ ArrayList<String> inventoryArr = new ArrayList<String>();
             //get index of where in the inventory the item user is looking for
             int indexOfInv = inventoryArr.indexOf(purchase);
             System.out.println(indexOfInv);
-            
+
             int indexOfId = indexOfInv - 1;
             int indexOfQty = indexOfInv + 1;
             int indexOfCost = indexOfInv + 2;
@@ -691,7 +858,7 @@ ArrayList<String> inventoryArr = new ArrayList<String>();
         String itemName = rentName.getText();
         //find rental data based on two fields entered with the sql statement and remove item
         JavaMedProject.remvRental(itemName, rentee);
-        
+
         rentUpdate.setText("Item returned, information updated successfully");
     }//GEN-LAST:event_retrnBtn1ActionPerformed
 
@@ -729,17 +896,55 @@ ArrayList<String> inventoryArr = new ArrayList<String>();
         System.out.println("The exit button will close the program entirely and any uncompleted rents or buys wont be processed");
         System.out.println("Only existing username and password may use the hospital equipment database.");
         System.out.println("!======================================================================================================!");
-        rentalReminder.setText("\n!======================================================================================================!\n"+
-                                "Hello, this application will allow you to rent and buy listed hospital equipment.\n" +
-                                "You can buy or rent from the appropriate labelled tabs.\n" +
-                                "Only the administrator may remove rented equipment and insert data.\n" +
-                                "A return button on the rentals page allows you to inform that equipment has been returned.\n" +
-                                "You may only rent an item for a month, you must renew the rented item otherwise.\n" +
-                                "The exit button will close the program entirely and any uncompleted rents or buys wont be processed\n" +
-                                "Only existing username and password may use the hospital equipment database.\n" +
-                                "!======================================================================================================!");
+        rentalReminder.setText("\n!======================================================================================================!\n"
+                + "Hello, this application will allow you to rent and buy listed hospital equipment.\n"
+                + "You can buy or rent from the appropriate labelled tabs.\n"
+                + "Only the administrator may remove rented equipment and insert data.\n"
+                + "A return button on the rentals page allows you to inform that equipment has been returned.\n"
+                + "You may only rent an item for a month, you must renew the rented item otherwise.\n"
+                + "The exit button will close the program entirely and any uncompleted rents or buys wont be processed\n"
+                + "Only existing username and password may use the hospital equipment database.\n"
+                + "!======================================================================================================!");
 
     }//GEN-LAST:event_infoGuideActionPerformed
+
+    private void signUpBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signUpBtnActionPerformed
+        // TODO add your handling code here:
+        String name = userSign.getText();
+        String passw = passSign.getText();
+        JavaMedProject.insertUser(name, passw);
+    }//GEN-LAST:event_signUpBtnActionPerformed
+
+    private void rentalgetBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rentalgetBtnActionPerformed
+        // TODO add your handling code here:
+        ArrayList<String> rentals = new ArrayList<String>();
+        rentals = JavaMedProject.getRentals();
+        System.out.println(rentals);
+        for (int i = 0; i < rentals.size(); i++) {
+            rentalinfo.append(rentals.get(i) + "\n");
+            System.out.println(rentals.get(i));
+        }
+    }//GEN-LAST:event_rentalgetBtnActionPerformed
+
+    private void userControlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userControlActionPerformed
+        // TODO add your handling code here:
+        ArrayList<String> userArr = new ArrayList<String>();
+        userArr = JavaMedProject.getUsers();
+        for (int i = 0; i < userArr.size(); i++) {
+            userCntrlField.append(userArr.get(i) + "\n");
+            System.out.println(userArr.get(i));
+        }
+    }//GEN-LAST:event_userControlActionPerformed
+
+    private void stockControlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stockControlActionPerformed
+        // TODO add your handling code here:
+        ArrayList<String> inventory = new ArrayList<String>();
+        inventory = JavaMedProject.getInventory();
+        for (int i = 0; i < inventory.size(); i++) {
+            stockCntrlPan.append(inventory.get(i) + "\n");
+            System.out.println(inventory.get(i));
+        }
+    }//GEN-LAST:event_stockControlActionPerformed
 
     /**
      * @param args the command line arguments
@@ -785,6 +990,8 @@ ArrayList<String> inventoryArr = new ArrayList<String>();
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -799,14 +1006,21 @@ ArrayList<String> inventoryArr = new ArrayList<String>();
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JButton loginBtn;
     private javax.swing.JButton loginExtBtn;
     private javax.swing.JTextField nameFld;
+    private javax.swing.JTextField passSign;
     private javax.swing.JTextField passWd;
     private javax.swing.JButton purchaseExtBtn;
     private javax.swing.JTextArea purchaseInform;
@@ -818,10 +1032,18 @@ ArrayList<String> inventoryArr = new ArrayList<String>();
     private javax.swing.JTextArea rentUpdate;
     private javax.swing.JButton rentalExtBtn;
     private javax.swing.JTextArea rentalReminder;
+    private javax.swing.JButton rentalgetBtn;
+    private javax.swing.JTextArea rentalinfo;
     private javax.swing.JTextField renteeName;
     private javax.swing.JButton retrnBtn1;
     private javax.swing.JButton returnRqst;
+    private javax.swing.JButton signUpBtn;
+    private javax.swing.JTextArea stockCntrlPan;
+    private javax.swing.JButton stockControl;
     private javax.swing.JButton updateAdmin;
+    private javax.swing.JTextArea userCntrlField;
+    private javax.swing.JButton userControl;
     private javax.swing.JTextField userName;
+    private javax.swing.JTextField userSign;
     // End of variables declaration//GEN-END:variables
 }
