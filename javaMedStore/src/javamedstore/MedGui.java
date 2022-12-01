@@ -937,9 +937,9 @@ ArrayList<String> inventoryArr = new ArrayList<String>();
         // TODO add your handling code here:
         //get data stored in both fields
         String rentee = renteeName.getText();
-        String itemName = rentName.getText();
+        String itName = itemName.getText();
         //find rental data based on two fields entered with the sql statement and remove item
-        JavaMedProject.remvRental(itemName, rentee);
+        JavaMedProject.remvRental(itName, rentee);
 
         rentUpdate.setText("Item returned, information updated successfully");
     }//GEN-LAST:event_retrnBtn1ActionPerformed
