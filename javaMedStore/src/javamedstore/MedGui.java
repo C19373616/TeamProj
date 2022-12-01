@@ -82,6 +82,9 @@ public class MedGui extends javax.swing.JFrame {
         purchaseInform = new javax.swing.JTextArea();
         purchaseExtBtn = new javax.swing.JButton();
         jLabel16 = new javax.swing.JLabel();
+        jScrollPane9 = new javax.swing.JScrollPane();
+        productsPane = new javax.swing.JTextArea();
+        getProducts = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         rentName = new javax.swing.JTextField();
         rentBtn = new javax.swing.JButton();
@@ -342,45 +345,73 @@ public class MedGui extends javax.swing.JFrame {
         jLabel16.setFont(new java.awt.Font("Cambria", 1, 24)); // NOI18N
         jLabel16.setText("Purchase Equipment Page");
 
+        productsPane.setEditable(false);
+        productsPane.setColumns(20);
+        productsPane.setRows(5);
+        jScrollPane9.setViewportView(productsPane);
+
+        getProducts.setText("Get Products");
+        getProducts.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                getProductsActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                                .addComponent(jLabel16)
+                                .addGap(37, 37, 37)
+                                .addComponent(purchaseExtBtn)
+                                .addGap(8, 8, 8))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addGap(70, 70, 70)
+                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel3)
+                                            .addComponent(purchaseName, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(24, 24, 24)
+                                        .addComponent(buyBtn))
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(getProducts)))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(237, 237, 237)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel3)
-                    .addComponent(purchaseName, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24)
-                .addComponent(buyBtn)
-                .addContainerGap(205, Short.MAX_VALUE))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel16)
-                .addGap(102, 102, 102)
-                .addComponent(purchaseExtBtn)
-                .addGap(14, 14, 14))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(purchaseExtBtn))
+                            .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(purchaseName, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(buyBtn))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(getProducts))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(purchaseExtBtn))
-                    .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(purchaseName, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buyBtn))
-                .addGap(42, 42, 42)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
+                        .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -1004,6 +1035,17 @@ ArrayList<String> inventoryArr = new ArrayList<String>();
         }
     }//GEN-LAST:event_stockControlActionPerformed
 
+    private void getProductsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getProductsActionPerformed
+        // TODO add your handling code here:
+        ArrayList<String> userInv = new ArrayList<String>();
+        userInv = JavaMedProject.getUsrInventory();
+        for (int i = 0; i < userInv.size(); i++) {
+            productsPane.append(i+"\n");
+            productsPane.append(userInv.get(i) + "\n");
+            System.out.println(userInv.get(i));
+        }
+    }//GEN-LAST:event_getProductsActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1042,6 +1084,7 @@ ArrayList<String> inventoryArr = new ArrayList<String>();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buyBtn;
     private javax.swing.JTextField costFld;
+    private javax.swing.JButton getProducts;
     private javax.swing.JButton infoGuide;
     private javax.swing.JButton insertAdmin;
     private javax.swing.JTextField itemName;
@@ -1079,6 +1122,7 @@ ArrayList<String> inventoryArr = new ArrayList<String>();
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
+    private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JButton loginBtn;
     private javax.swing.JButton loginExtBtn;
@@ -1086,6 +1130,7 @@ ArrayList<String> inventoryArr = new ArrayList<String>();
     private javax.swing.JTextField passSign;
     private javax.swing.JTextField passSign1;
     private javax.swing.JTextField passWd;
+    private javax.swing.JTextArea productsPane;
     private javax.swing.JButton purchaseExtBtn;
     private javax.swing.JTextArea purchaseInform;
     private javax.swing.JTextField purchaseName;
