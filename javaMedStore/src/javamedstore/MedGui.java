@@ -964,7 +964,7 @@ ArrayList<String> inventoryArr = new ArrayList<String>();
         String name = userSign.getText();
         String passw = passSign.getText();
         String confpassw = passSign1.getText();
-        if(confpassw == passw){
+        if(confpassw.equals(passw)){
             JavaMedProject.insertUser(name, passw);
             signUpInform.setText("User has been created!");
         }else{
