@@ -46,6 +46,7 @@ public class ItemReturnForm extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         itemName1 = new javax.swing.JTextField();
+        returnFormExtBtn = new javax.swing.JButton();
 
         purchaseInform.setEditable(false);
         purchaseInform.setColumns(20);
@@ -101,6 +102,13 @@ public class ItemReturnForm extends javax.swing.JFrame {
             }
         });
 
+        returnFormExtBtn.setText("Exit");
+        returnFormExtBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                returnFormExtBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -108,7 +116,6 @@ public class ItemReturnForm extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(submitBtn)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
@@ -122,8 +129,13 @@ public class ItemReturnForm extends javax.swing.JFrame {
                             .addComponent(phoneNo1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(itemName1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(submitBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(returnFormExtBtn)
+                        .addGap(24, 24, 24))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(199, 199, 199)
                 .addComponent(jLabel1)
@@ -155,7 +167,9 @@ public class ItemReturnForm extends javax.swing.JFrame {
                             .addComponent(jLabel5)))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
-                .addComponent(submitBtn)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(submitBtn)
+                    .addComponent(returnFormExtBtn))
                 .addContainerGap(45, Short.MAX_VALUE))
         );
 
@@ -231,6 +245,11 @@ public class ItemReturnForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_itemName1ActionPerformed
 
+    private void returnFormExtBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnFormExtBtnActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_returnFormExtBtnActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -287,6 +306,7 @@ public class ItemReturnForm extends javax.swing.JFrame {
     private javax.swing.JTextField phoneNo1;
     private javax.swing.JTextArea purchaseInform;
     private javax.swing.JTextField renteeName1;
+    private javax.swing.JButton returnFormExtBtn;
     private javax.swing.JButton submitBtn;
     // End of variables declaration//GEN-END:variables
 }
