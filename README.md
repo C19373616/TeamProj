@@ -21,3 +21,5 @@ Heuristic 10 - Help and documentation.
 30/11/2022 19:10 Richard Sosinski - Added user creation, Admin checking of stock and users, admin checking of rentals 
 
 01/11/2022 16:13 Richard Sosinski - Added a new pane and button on purchase page allowing the user to see what products are available
+
+2/12/2022 14:07 Francis Santos - Completed the commenting for all the functions within the program we created and now ready for project submission.
