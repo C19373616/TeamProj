@@ -859,17 +859,22 @@ ArrayList<String> inventoryArr = new ArrayList<String>();
             //get index of where in the inventory the item user is looking for
             int indexOfInv = inventoryArr.indexOf(purchase);
             System.out.println(indexOfInv);
-
+            //index of other components of the array list regarding the ID of the item
             int indexOfId = indexOfInv - 1;
             int indexOfQty = indexOfInv + 1;
             int indexOfCost = indexOfInv + 2;
+            //time in milliseconds
             long millis = System.currentTimeMillis();
+            //makes the sql date 
             java.sql.Date date = new java.sql.Date(millis);
+            //gets gets the correct variables from the array list
             String nameOfItm = inventoryArr.get(indexOfInv);
             System.out.println(inventoryArr.get(indexOfQty));
             int costOfItm = Integer.parseInt(inventoryArr.get(indexOfCost));
+            // sends the variables to the database using insertPurchase()
             JavaMedProject.insertPurchase(nameOfItm, date, costOfItm);
             int newQty = Integer.parseInt(inventoryArr.get(indexOfQty)) - 1;
+            //removes one quantity from the database
             JavaMedProject.updateInv(newQty, Integer.parseInt(inventoryArr.get(indexOfId)));
             purchaseInform.setText("Purchase Successful your account has been charged");
         }
@@ -891,6 +896,7 @@ ArrayList<String> inventoryArr = new ArrayList<String>();
 
     private void insertAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertAdminActionPerformed
         // TODO add your handling code here:
+        //inserts items from the admin menu
         String nameStr = nameFld.getText();
         int qtyInt = Integer.parseInt(qtyFld.getText());
         int costInt = Integer.parseInt(costFld.getText());
@@ -899,16 +905,19 @@ ArrayList<String> inventoryArr = new ArrayList<String>();
 
     private void rentBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rentBtnActionPerformed
         // TODO add your handling code here:
+        //gets the rental name from the rent frame
         String nameStr = rentName.getText();
         int costOfProd = Integer.parseInt(inventoryArr.get(inventoryArr.indexOf(nameStr) + 2));
         // String costOfProd = inventoryArr.get(inventoryArr.indexOf(nameStr)+2);
+        
         String rentee = userName.getText();
         System.out.println(nameStr);
         System.out.println(costOfProd);
         System.out.println(rentee);
-
+        //gets current data in sql format
         long millis = System.currentTimeMillis();
         java.sql.Date date = new java.sql.Date(millis);
+        //adds a month on top of that date for the final rental date
         LocalDate ld = date.toLocalDate();
         LocalDate monthAdded = ld.plusMonths(1);
         java.sql.Date sqldate = java.sql.Date.valueOf(monthAdded);
@@ -969,6 +978,7 @@ ArrayList<String> inventoryArr = new ArrayList<String>();
 
     private void infoGuideActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_infoGuideActionPerformed
         // TODO add your handling code here:
+        //Help information
         System.out.println("\n!======================================================================================================!");
         System.out.println("Hello, this application will allow you to rent and buy listed hospital equipment.");
         System.out.println("You can buy or rent from the appropriate labelled tabs.");
@@ -1006,6 +1016,7 @@ ArrayList<String> inventoryArr = new ArrayList<String>();
 
     private void rentalgetBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rentalgetBtnActionPerformed
         // TODO add your handling code here:
+        //gets all the rentals from the rental table
         ArrayList<String> rentals = new ArrayList<String>();
         rentals = JavaMedProject.getRentals();
         System.out.println(rentals);
@@ -1017,6 +1028,7 @@ ArrayList<String> inventoryArr = new ArrayList<String>();
 
     private void userControlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userControlActionPerformed
         // TODO add your handling code here:
+        // gets all the users from the table
         ArrayList<String> userArr = new ArrayList<String>();
         userArr = JavaMedProject.getUsers();
         for (int i = 0; i < userArr.size(); i++) {
@@ -1027,6 +1039,7 @@ ArrayList<String> inventoryArr = new ArrayList<String>();
 
     private void stockControlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stockControlActionPerformed
         // TODO add your handling code here:
+        //gets the whole inventory from the table
         ArrayList<String> inventory = new ArrayList<String>();
         inventory = JavaMedProject.getInventory();
         for (int i = 0; i < inventory.size(); i++) {
@@ -1037,6 +1050,7 @@ ArrayList<String> inventoryArr = new ArrayList<String>();
 
     private void getProductsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getProductsActionPerformed
         // TODO add your handling code here:
+        //gets the inventory for the user
         ArrayList<String> userInv = new ArrayList<String>();
         userInv = JavaMedProject.getUsrInventory();
         for (int i = 0; i < userInv.size(); i++) {
