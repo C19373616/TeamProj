@@ -235,7 +235,7 @@ public class ItemReturnForm extends javax.swing.JFrame {
                     }
                 }
             }
-            //catch any error that may occur when trying to write to file
+        //catch any error that may occur when trying to write to file
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -247,6 +247,7 @@ public class ItemReturnForm extends javax.swing.JFrame {
 
     private void returnFormExtBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnFormExtBtnActionPerformed
         // TODO add your handling code here:
+        //terminates the program entirely
         System.exit(0);
     }//GEN-LAST:event_returnFormExtBtnActionPerformed
 

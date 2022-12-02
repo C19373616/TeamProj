@@ -47,7 +47,7 @@ public class JavaMedProject {
         }
         //main execution to enter sql statement into database
         try {
-
+            //select the username, password and priority from Users table where user is the value of parameters passed in through vars 'usr' and 'pass'
             String sqlStr = "SELECT usr, passwd, Priority FROM Users WHERE usr='" + usr + "' AND passwd='" + pass + "'";
             System.out.println(sqlStr);
             // String sqlStr = "Select usr, passwd from Users Where ID = 1";
@@ -113,7 +113,7 @@ public class JavaMedProject {
         return loginArray;
 
     }
-    
+
     //function lists out all data from Inventory table
     public static ArrayList<String> getUsers() {
         Connection connection = null;
@@ -134,6 +134,7 @@ public class JavaMedProject {
         try {
 
             //String sqlStr = "SELECT user, passwd FROM Users WHERE usr='"+usr+"' AND passwd='"+pass+"'";
+            //select all rows and columns from users table
             String sqlStr = "Select * from Users";
             // Step 2.A: Create and get connection using DriverManager class
             connection = DriverManager.getConnection(dbURL);
@@ -193,7 +194,7 @@ public class JavaMedProject {
         }
         return userArray;
     }
-    
+
     public static ArrayList<String> getInventory() {
         Connection connection = null;
         Statement statement = null;
@@ -213,6 +214,7 @@ public class JavaMedProject {
         try {
 
             //String sqlStr = "SELECT user, passwd FROM Users WHERE usr='"+usr+"' AND passwd='"+pass+"'";
+            //select all rows and columns from inventory table
             String sqlStr = "Select * from Inventory";
             // Step 2.A: Create and get connection using DriverManager class
             connection = DriverManager.getConnection(dbURL);
@@ -272,6 +274,7 @@ public class JavaMedProject {
         }
         return inventoryArray;
     }
+
     public static ArrayList<String> getUsrInventory() {
         Connection connection = null;
         Statement statement = null;
@@ -291,6 +294,7 @@ public class JavaMedProject {
         try {
 
             //String sqlStr = "SELECT user, passwd FROM Users WHERE usr='"+usr+"' AND passwd='"+pass+"'";
+            //select name column from inventory table
             String sqlStr = "Select Name from Inventory";
             // Step 2.A: Create and get connection using DriverManager class
             connection = DriverManager.getConnection(dbURL);
@@ -350,7 +354,7 @@ public class JavaMedProject {
         }
         return inventoryArray;
     }
-    
+
     //function allows for purchase to be made and data to be recorded
     public static void insertPurchase(String Name, Date DatePurchased, int Cost) {
         Connection connection = null;
@@ -372,14 +376,15 @@ public class JavaMedProject {
         //main execution to enter sql statement into database
         try ( Connection conn = DriverManager.getConnection(dbURL);  Statement stmnt = conn.createStatement();) {
             System.out.println("Inserting records into the table...");
+            //Insert into purchases into appropriate columns the values passed in stored in variables 'Name','DatePurchased' and cost
             String sqlStr = "INSERT INTO purchases(Name, DatePurchased, Cost) VALUES('" + Name + "','" + DatePurchased + "'," + Cost + ")";
             stmnt.executeUpdate(sqlStr);
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
-    
-    //?
+
+    //function allows update of the inventory table by quantity and id of item
     public static void updateInv(int quantity, int iD) {
         Connection connection = null;
         Statement statement = null;
@@ -400,6 +405,7 @@ public class JavaMedProject {
         //main execution to enter sql statement into database
         try ( Connection conn = DriverManager.getConnection(dbURL);  Statement stmnt = conn.createStatement();) {
             System.out.println("Updating records into the table...");
+            //update the inventory table and set quantity to value stored in passed parameter 'quantity' and where id = value passed in parameter 'iD'
             String sqlStr = "UPDATE inventory SET quantity=" + quantity + " WHERE ID=" + iD + "";
             stmnt.executeUpdate(sqlStr);
         } catch (SQLException e) {
@@ -428,13 +434,14 @@ public class JavaMedProject {
         //main execution to enter sql statement into database
         try ( Connection conn = DriverManager.getConnection(dbURL);  Statement stmnt = conn.createStatement();) {
             System.out.println("Updating records into the table...");
+            //update the inventory table accordingly by values stored in parameters passed in called 'name','quantity','cost' and 'iD'
             String sqlStr = "UPDATE inventory SET Name='" + name + "', quantity=" + quantity + ", Cost=" + cost + " WHERE ID=" + iD + "";
             stmnt.executeUpdate(sqlStr);
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
-    
+
     //function allows for admin to insert existing into the inventory.
     public static void adminInsertInventory(String Name, int quantity, int Cost) {
         Connection connection = null;
@@ -456,13 +463,14 @@ public class JavaMedProject {
         //main execution to enter sql statement into database
         try ( Connection conn = DriverManager.getConnection(dbURL);  Statement stmnt = conn.createStatement();) {
             System.out.println("Inserting records into the table...");
+            //Insert into inventory table into appropriate columns the values passed in stored in variables 'Name','quantity' and 'cost'
             String sqlStr = "INSERT INTO Inventory(Name, Quantity, Cost) VALUES('" + Name + "'," + quantity + "," + Cost + ")";
             stmnt.executeUpdate(sqlStr);
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
-    
+
     //function allows for rental to be made and for data to be recorded
     public static void insertRental(String Name, Date rentalDate, Date returnDate, int cost, String rentee) {
         Connection connection = null;
@@ -470,7 +478,7 @@ public class JavaMedProject {
         ResultSet resultSet = null;
         String msAccDB = "MedStore1.accdb"; // path to the DB file
         String dbURL = "jdbc:ucanaccess://" + msAccDB;
-        
+
         try {
             //loading in JDBC driver.
             // Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
@@ -484,6 +492,7 @@ public class JavaMedProject {
         //main execution to enter sql statement into database
         try ( Connection conn = DriverManager.getConnection(dbURL);  Statement stmnt = conn.createStatement();) {
             System.out.println("Inserting records into the table...");
+            //Insert into rentals table into appropriate columns the values passed in stored in variables 'Name','rentalDate','renturnDate' and 'cost'
             String sqlStr = "INSERT INTO Rentals(Name, DateRented, ToBeReturned, Cost, Rentee) VALUES('" + Name + "','" + rentalDate + "','" + returnDate + "'," + cost + ",'" + rentee + "')";
             System.out.println(sqlStr);
             stmnt.executeUpdate(sqlStr);
@@ -491,7 +500,7 @@ public class JavaMedProject {
             e.printStackTrace();
         }
     }
-    
+
     //function allows for rental data to be removed.
     public static void remvRental(String itemName, String rentee) {
         Connection connection = null;
@@ -513,6 +522,7 @@ public class JavaMedProject {
         //main execution to enter sql statement into database
         try ( Connection conn = DriverManager.getConnection(dbURL);  Statement stmnt = conn.createStatement();) {
             System.out.println("User is returning item...");
+            //delete from rentals table where name is the value stored in parameter passed in 'itemName' and 'rentee'
             String sqlStr = "DELETE FROM Rentals WHERE Name = '" + itemName + "' AND Rentee ='" + rentee + "'";
             //System.out.println(sqlStr);
             stmnt.executeUpdate(sqlStr);
@@ -520,7 +530,7 @@ public class JavaMedProject {
             e.printStackTrace();
         }
     }
-    
+
     //function lists out all data from rentals table
     public static ArrayList<String> getRentals() {
         Connection connection = null;
@@ -544,6 +554,7 @@ public class JavaMedProject {
         try {
 
             //String sqlStr = "SELECT user, passwd FROM Users WHERE usr='"+usr+"' AND passwd='"+pass+"'";
+            //select all columns and rows from rentals table
             String sqlStr = "Select * from Rentals";
             // Step 2.A: Create and get connection using DriverManager class
             connection = DriverManager.getConnection(dbURL);
@@ -603,14 +614,14 @@ public class JavaMedProject {
         }
         return rentalArray;
     }
-
-        public static void insertUser(String name, String passw) {
+    //function allows the insert/creation of new user.
+    public static void insertUser(String name, String passw) {
         Connection connection = null;
         Statement statement = null;
         ResultSet resultSet = null;
         String msAccDB = "MedStore1.accdb"; // path to the DB file
         String dbURL = "jdbc:ucanaccess://" + msAccDB;
-        
+
         try {
             //loading in JDBC driver.
             // Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
@@ -624,16 +635,15 @@ public class JavaMedProject {
         //main execution to enter sql statement into database
         try ( Connection conn = DriverManager.getConnection(dbURL);  Statement stmnt = conn.createStatement();) {
             System.out.println("Inserting records into the table...");
-            String sqlStr = "INSERT INTO Users(usr, passwd, Priority) VALUES('"+name+"','"+passw+"',0)";
+            //insert into users table into appropriate columns specified the value stored in parameters passed in called 'name' and 'passw'
+            String sqlStr = "INSERT INTO Users(usr, passwd, Priority) VALUES('" + name + "','" + passw + "',0)";
             System.out.println(sqlStr);
             stmnt.executeUpdate(sqlStr);
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
-        
-        
-        
+    
     public static void main(String[] args) {
         // TODO code application logic here
         new JavaMedProject();

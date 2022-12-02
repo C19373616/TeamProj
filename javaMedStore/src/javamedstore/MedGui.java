@@ -21,6 +21,7 @@ public class MedGui extends javax.swing.JFrame {
     /**
      * Creates new form MedGui
      */
+    //disables all tabs besides the sign up and login
     public MedGui() {
         initComponents();
         for (Component c : jPanel3.getComponents()) {
@@ -771,7 +772,7 @@ ArrayList<String> inventoryArr = new ArrayList<String>();
         //if user does not exist or if username or password is wrong state error and disable tabs
         if (deets.size() == 0 && deets.size() <= 3) {
             rentalReminder.setText("Incorrect username or password please try again");
-            //disable all tabs
+            //disable all tabs besides login and sign up
             for (Component c : jPanel3.getComponents()) {
                 c.setEnabled(false);
             }
@@ -780,6 +781,12 @@ ArrayList<String> inventoryArr = new ArrayList<String>();
             }
             for (Component e : jPanel5.getComponents()) {
                 e.setEnabled(false);
+            }
+            for (Component c : jPanel8.getComponents()) {
+                c.setEnabled(false);
+            }
+            for (Component c : jPanel9.getComponents()) {
+                c.setEnabled(false);
             }
             //if user credentials are correct execute main code
         } else {
@@ -905,11 +912,12 @@ ArrayList<String> inventoryArr = new ArrayList<String>();
 
     private void rentBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rentBtnActionPerformed
         // TODO add your handling code here:
-        //gets the rental name from the rent frame
+        //gets the rental name from the rent frame and cost of item
         String nameStr = rentName.getText();
         int costOfProd = Integer.parseInt(inventoryArr.get(inventoryArr.indexOf(nameStr) + 2));
-        // String costOfProd = inventoryArr.get(inventoryArr.indexOf(nameStr)+2);
-        
+        //String costOfProd = inventoryArr.get(inventoryArr.indexOf(nameStr)+2);
+
+        //gets the value stored in field userName and print item namem, cost and renter
         String rentee = userName.getText();
         System.out.println(nameStr);
         System.out.println(costOfProd);
@@ -922,7 +930,9 @@ ArrayList<String> inventoryArr = new ArrayList<String>();
         LocalDate monthAdded = ld.plusMonths(1);
         java.sql.Date sqldate = java.sql.Date.valueOf(monthAdded);
 
+        //call function insertRental and pass parameters to add new rental information
         JavaMedProject.insertRental(nameStr, date, sqldate, costOfProd, rentee);
+        //inform user of duration of rental
         rentInform.setText("The rental has been set, you can only have 1 rental at a time. There will be a penalty for not returning the item at: " + sqldate);
     }//GEN-LAST:event_rentBtnActionPerformed
 
@@ -955,21 +965,25 @@ ArrayList<String> inventoryArr = new ArrayList<String>();
 
     private void rentalExtBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rentalExtBtnActionPerformed
         // TODO add your handling code here:
+        //terminates the program entirely
         System.exit(0);
     }//GEN-LAST:event_rentalExtBtnActionPerformed
 
     private void purchaseExtBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_purchaseExtBtnActionPerformed
         // TODO add your handling code here:
+        //terminates the program entirely
         System.exit(0);
     }//GEN-LAST:event_purchaseExtBtnActionPerformed
 
     private void loginExtBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginExtBtnActionPerformed
         // TODO add your handling code here:
+        //terminates the program entirely
         System.exit(0);
     }//GEN-LAST:event_loginExtBtnActionPerformed
 
     private void returnRqstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnRqstActionPerformed
         // TODO add your handling code here:
+        //creates new form for returning items and closes the login,purchase,rental and admin form.
         ItemReturnForm itr = new ItemReturnForm();
         itr.show();
         dispose();
@@ -1002,16 +1016,17 @@ ArrayList<String> inventoryArr = new ArrayList<String>();
 
     private void signUpBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signUpBtnActionPerformed
         // TODO add your handling code here:
+        //get username and password, passwords must match or account wont be created.
         String name = userSign.getText();
         String passw = passSign.getText();
         String confpassw = passSign1.getText();
-        if(confpassw.equals(passw)){
+        if (confpassw.equals(passw)) {
             JavaMedProject.insertUser(name, passw);
             signUpInform.setText("User has been created!");
-        }else{
+        } else {
             signUpInform.setText("Passwords entered do not match please make sure passwords match in both fields.");
         }
-        
+
     }//GEN-LAST:event_signUpBtnActionPerformed
 
     private void rentalgetBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rentalgetBtnActionPerformed
@@ -1054,7 +1069,7 @@ ArrayList<String> inventoryArr = new ArrayList<String>();
         ArrayList<String> userInv = new ArrayList<String>();
         userInv = JavaMedProject.getUsrInventory();
         for (int i = 0; i < userInv.size(); i++) {
-            productsPane.append(i+"\n");
+            productsPane.append(i + "\n");
             productsPane.append(userInv.get(i) + "\n");
             System.out.println(userInv.get(i));
         }
